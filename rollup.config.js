@@ -1,4 +1,5 @@
 import svelte from 'rollup-plugin-svelte';
+import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import json from "@rollup/plugin-json";
@@ -9,6 +10,8 @@ import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 
 const production = !process.env.ROLLUP_WATCH;
+const legacy = !!process.env.IS_LEGACY_BUILD;
+
 
 function serve() {
 	let server;
@@ -47,6 +50,29 @@ export default {
 				dev: !production
 			}
 		}),
+        // Legacy 
+        legacy && babel({
+            extensions: [".js", ".mjs", ".html", ".svelte"],
+            runtimeHelpers: true,
+            exclude: ["node_modules/@babel/**"],
+            presets: [
+                [
+                    "@babel/preset-env",
+                    {
+                        targets: "> 0.25%, not dead",
+                    },
+                ],
+            ],
+            plugins: [
+                "@babel/plugin-syntax-dynamic-import",
+                [
+                    "@babel/plugin-transform-runtime",
+                    {
+                        useESModules: true,
+                    },
+                ],
+            ],
+        }),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),

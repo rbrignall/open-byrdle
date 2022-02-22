@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/rbrignall/open-byrdle#readme",
   "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.1.3",
