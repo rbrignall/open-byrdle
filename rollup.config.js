@@ -10,7 +10,7 @@ import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 
 const production = !process.env.ROLLUP_WATCH;
-const legacy = !!process.env.IS_LEGACY_BUILD;
+const legacy = !process.env.IS_LEGACY_BUILD;
 
 
 function serve() {
@@ -53,13 +53,15 @@ export default {
         // Legacy 
         legacy && babel({
             extensions: [".js", ".mjs", ".html", ".svelte"],
-            runtimeHelpers: true,
+            babelHelpers: 'runtime',
             exclude: ["node_modules/@babel/**"],
             presets: [
                 [
                     "@babel/preset-env",
                     {
-                        targets: "> 0.25%, not dead",
+                        targets: "> 0.25%, not dead",//{
+                            //"browsers": "last 2 versions, safari >= 7, ios_saf >= 9, chrome >= 52"
+                        //},//
                     },
                 ],
             ],

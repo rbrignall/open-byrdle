@@ -21,6 +21,8 @@
   "homepage": "https://github.com/rbrignall/open-byrdle#readme",
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-json": "^4.1.0",
@@ -41,7 +43,6 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "seedrandom": "^3.0.5",
     "sirv-cli": "^2.0.2"
   }
 }
