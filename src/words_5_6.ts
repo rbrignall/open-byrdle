@@ -54,17 +54,17 @@ const answers = [
         "wesley","beamed","nobile","divisi","quaver","batten","record","adagio","petrus","lydian",
         "loudly","regina","nodule","church","kodaly","legato","cantor","plagal","barber","maxima",
         "degree","lieder","stabat","upbeat","harris","subito","intone","firmus","mealor","triste",
-        "fourth","hymnal","accent","rubbra","repeat","breath","minima","morley","libera","troppo",//200
+        "fourth","hymnal","accent","easter","repeat","breath","minima","morley","libera","troppo",//200
         "dvorak","dotted","clucas","dental","gospel","artist","corona","system","gounod","phonic",
         "gruber","ottava","wobble","broken","claque","common","minuet","patter","spinto","triple",
         "elijah","franck","gargle","wagner","ledger","uvular","niente","simile","forced","tempus",
         "naylor","attack","arioso","tierce","poston","tuplet","greene","simple","masses","oriana",
-    "bishop","farmer","burgon","clarke","nowell","dering","venite","wilbye","allain","studio",//250
-    "samson","octavo","crotch","davies","semele","walker","folder","magnum","browne","bingen",
-    "pastor","bridge","lament","luther","wachet","ionian","curate","johann","bartok","paulus",
-    "tormis","crosby","delius","podium","tongue","bridal","memory","carter","prayer","ritard",
-    "martin","direct","arnold","ligeti","brewer","seated","risers","webber","stanza","gjeilo",
-    "enrobe","timing","bardos","throat","sonore","archer","listen","byrdle","schutz","samson",//300
+    "bishop","farmer","manual","clarke","nowell","dering","venite","advent","dulcet","studio",//250
+    "samson","octavo","crotch","medley","semele","walker","folder","magnum","tollis","bingen",
+    "pastor","bridge","lament","luther","wachet","ionian","curate","johann","stress","sacred",
+    "softer","crosby","lenten","podium","tongue","bridal","memory","carter","prayer","ritard",
+    "giusto","direct","arnold","sonnet","sombre","seated","risers","modern","stanza","louder",
+    "enrobe","timing","mortis","throat","sonore","archer","listen","byrdle","schutz","taize",//300
     "theory","mahler","finale","encore","tunes","nasal","metre","belto","dufay","pipes",
     "chest","longa","bravo","break","slide","twang",//316
     ];
