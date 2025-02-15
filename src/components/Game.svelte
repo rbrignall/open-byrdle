@@ -225,7 +225,6 @@
             data-ad-slot="2571353285"
             data-ad-format="auto"
             data-full-width-responsive="true"></ins>
-<script>
     </div>
 
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
