@@ -20,7 +20,8 @@
 	--game-width: 500px;
     --header-height: 51px;
     --keyboard-height: 186px;
-
+    --ad-height: 61px;
+    
 	--fg-primary: #d7dadc;
 	--fg-secondary: #818384;
 	--icon-color: #565758;
@@ -78,6 +79,12 @@ h3 {
 	text-transform: uppercase;
 	margin-bottom: 10px;
 }
+
+.adwrapper {
+    height: var(--ad-height);
+    width: 100%;
+}
+
 .absent,
 .present,
 .correct {
