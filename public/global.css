@@ -94,6 +94,7 @@ h3 {
 }
 .rightadwrapper, .leftadwrapper {
     min-width: 250px;
+    max-width: 350px;
     max-height: 600px;
     height: 100%;
     width: calc(50% - 250px);
