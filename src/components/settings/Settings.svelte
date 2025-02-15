@@ -78,16 +78,16 @@
 		</div>
         <h3 style="margin-top: 10px;">Credits</h3>
         <div>
-            <p>This game is inspired by <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank">Wordle</a>, and is an implementation of an idea of <a href="https://twitter.com/QuireMemes">QuireMemes</a>.</p>
+            <p>This game is inspired by <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank">Wordle</a>, and is an implementation of an idea of <a href="https://tx.com/QuireMemes">QuireMemes</a>.</p>
             <p>The <a href="https://github.com/rbrignall/open-byrdle">code</a> is open source, written with Svelte in Typescript by <a href="https://github.com/rbrignall" target="_blank">rbrignall</a> on a base by <a href="https://github.com/MikhaD" target="_blank">MikhaD</a>.</p>
         </div>
         
         <div>
-	       Byrdle is free to play and ad-free, but you can <a href="https://www.buymeacoffee.com/rbrignall" target="_blank">buy me a coffee</a>! You can also check out another word game I developed: <a href="https://susie.rbrignall.org.uk/" target="_blank">Susie</a>.
+	       Byrdle is free to play, but you can <a href="https://www.buymeacoffee.com/rbrignall" target="_blank">buy me a coffee</a>! You can also check out another word game I developed: <a href="https://susie.rbrignall.org.uk/" target="_blank">Susie</a>.
         </div>
 	</div>
     <div class="footer">
-        <div>Version: Byrd 5.5.1</div>
+        <div>Version: Byrd 5.6</div>
         <div class="word">
             Game #{wordNumber+1}
         </div>

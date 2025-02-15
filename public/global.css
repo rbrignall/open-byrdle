@@ -20,7 +20,8 @@
 	--game-width: 500px;
     --header-height: 51px;
     --keyboard-height: 186px;
-
+    --ad-height: 61px;
+    
 	--fg-primary: #d7dadc;
 	--fg-secondary: #818384;
 	--icon-color: #565758;
@@ -78,6 +79,41 @@ h3 {
 	text-transform: uppercase;
 	margin-bottom: 10px;
 }
+
+.adwrapper {
+    height: var(--ad-height);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.leftadwrapper {
+    float: left;
+}
+.rightadwrapper {
+    float: right;
+}
+.rightadwrapper, .leftadwrapper {
+    min-width: 250px;
+    max-width: 350px;
+    max-height: 600px;
+    height: 100%;
+    width: calc(50% - 250px);
+    margin: 0px;
+    vertical-align: middle;
+}
+
+@media (max-width:1001px) {
+    .rightadwrapper, .leftadwrapper {
+        display: none;
+    }
+}
+
+@media (min-width:1000px) {
+    .adwrapper {
+        display: none;
+    }
+}
+
 .absent,
 .present,
 .correct {

@@ -192,6 +192,7 @@
     }
     
 	onMount(() => {
+        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
 		if (!(game.gameStatus === "IN_PROGRESS") && $mode === 0) setTimeout(() => (showStats = true), delay);
         if (stats.gamesPlayed === 0) {
             showImport = true;
@@ -209,8 +210,32 @@
 </script>
 
 <svelte:body on:click={board.hideCtx} on:contextmenu={board.hideCtx} />
+    <div class="leftadwrapper">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-2276519097140776"
+            data-ad-slot="4730612764"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+    <div class="rightadwrapper">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-2276519097140776"
+            data-ad-slot="2571353285"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
 
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
+    <div class="adwrapper">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-2276519097140776"
+            data-ad-slot="2884507619"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
 	<Header
 		bind:showRefresh
 		showStats={stats.gamesPlayed > 0 || (modeData.modes[$mode].historical && !(game.gameStatus === "IN_PROGRESS"))}
