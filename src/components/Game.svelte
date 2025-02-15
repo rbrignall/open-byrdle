@@ -214,7 +214,7 @@
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
     <div class="adwrapper">
         <ins class="adsbygoogle"
-            style="display:inline-block;width:300px;height:60px"
+            style="display:inline-block;height:60px;"
             data-ad-client="ca-pub-2276519097140776"
             data-ad-slot="4414083844"></ins>
     </div>
