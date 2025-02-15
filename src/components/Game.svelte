@@ -230,10 +230,11 @@
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
     <div class="adwrapper">
         <ins class="adsbygoogle"
-            style="display:inline-block;height:60px;width:100%;"
-            data-ad-format="fluid"
+            style="display:block"
             data-ad-client="ca-pub-2276519097140776"
-            data-ad-slot="4414083844"></ins>
+            data-ad-slot="2884507619"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
     </div>
 	<Header
 		bind:showRefresh

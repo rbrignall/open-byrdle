@@ -101,17 +101,17 @@ h3 {
     vertical-align: middle;
 }
 
-@media (max-width:1000px) {
+@media (max-width:1001px) {
     .rightadwrapper, .leftadwrapper {
         display: none;
     }
 }
-/*
-@media (min-width:821px) {
+
+@media (min-width:1000px) {
     .adwrapper {
         display: none;
     }
-}*/
+}
 
 .absent,
 .present,
