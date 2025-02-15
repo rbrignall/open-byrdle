@@ -210,6 +210,20 @@
 </script>
 
 <svelte:body on:click={board.hideCtx} on:contextmenu={board.hideCtx} />
+    <div class="leftadwrapper">
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:150px;height:calc(100%-80px);"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-2276519097140776"
+            data-ad-slot="2094170120"></ins>
+    </div>
+    <div class="rightadwrapper">
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:150px;height:calc(100%-80px);"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-2276519097140776"
+            data-ad-slot="6426837819"></ins>
+    </div>
 
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
     <div class="adwrapper">
