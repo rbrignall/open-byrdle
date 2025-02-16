@@ -215,7 +215,6 @@
             style="display:block"
             data-ad-client="ca-pub-2276519097140776"
             data-ad-slot="4730612764"
-            data-ad-format="vertical"
             data-full-width-responsive="false"></ins>
     </div>
     <div class="rightadwrapper">
@@ -223,7 +222,6 @@
             style="display:block"
             data-ad-client="ca-pub-2276519097140776"
             data-ad-slot="2571353285"
-            data-ad-format="vertical"
             data-full-width-responsive="true"></ins>
     </div>
 
@@ -233,7 +231,6 @@
             style="display:block"
             data-ad-client="ca-pub-2276519097140776"
             data-ad-slot="2884507619"
-            data-ad-format="horizontal"
             data-full-width-responsive="true"></ins>
     </div>
 	<Header

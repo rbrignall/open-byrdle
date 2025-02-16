@@ -109,20 +109,9 @@ h3 {
     }
     .headerad {
         height: 60px;
-        width: 320px;
+        max-width: 500px;
+        width:100%;
     }
-}
-
-@media (min-width: 390px) {
-    .headerad {
-        width: 390px;
-    }    
-}
-
-@media (min-width: 500px) {
-    .headerad {
-        width: 500px;
-    }    
 }
 
 @media (min-width:1000px) {
@@ -133,13 +122,9 @@ h3 {
         display: none;
     }
     .sidead {
-        width: 250px;        
-    }
-}
-
-@media (min-width:1200px) {
-    .sidead {
-        width: 350px;        
+        min-width: 250px;
+        max-width: 350px;
+        width: calc(50% - 250px);        
     }
 }
 
