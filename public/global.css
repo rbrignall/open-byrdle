@@ -109,6 +109,9 @@ h3 {
 }
 
 @media (min-width:1000px) {
+    :root {
+        --ad-height: 0px;
+    }
     .adwrapper {
         display: none;
     }
