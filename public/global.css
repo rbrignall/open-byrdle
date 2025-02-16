@@ -108,10 +108,21 @@ h3 {
         display: none;
     }
     .headerad {
-        height:60px;
-        max-width:500px;
-        width:100%;
+        height: 60px;
+        width: 320px;
     }
+}
+
+@media (min-width: 390px) {
+    .headerad {
+        width: 390px;
+    }    
+}
+
+@media (min-width: 500px) {
+    .headerad {
+        width: 500px;
+    }    
 }
 
 @media (min-width:1000px) {
