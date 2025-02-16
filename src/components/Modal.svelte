@@ -61,7 +61,7 @@
 		background: var(--bg-primary);
 		max-width: var(--game-width);
 /*		height: min-content;*/
-		max-height: 90%;
+		max-height: calc(90% - var(--ad-height));
 		width: 100%;
 		overflow-y: auto;
 		border-radius: 0px;
@@ -69,7 +69,7 @@
 		--modal-padding: 16px;
 		padding: var(--modal-padding);
 		padding-top: calc(2 * var(--modal-padding));
-		margin: 5% auto;
+		margin: calc(5% + var(--ad-height)) auto 5% auto;
 		transition: all 0.3s ease;
 		> :global(*:not(h3)) {
 			margin-bottom: 15px;
