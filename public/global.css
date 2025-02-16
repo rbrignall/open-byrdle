@@ -85,6 +85,7 @@ h3 {
     width: 100%;
     display: flex;
     justify-content: center;
+    border: 1px solid #000;
 }
 .leftadwrapper {
     float: left;
@@ -95,16 +96,21 @@ h3 {
 .rightadwrapper, .leftadwrapper {
     min-width: 250px;
     max-width: 350px;
-    max-height: 600px;
     height: 100%;
     width: calc(50% - 250px);
     margin: 0px;
     vertical-align: middle;
+    border: 1px solid #000;
 }
 
-@media (max-width:1001px) {
-    .rightadwrapper, .leftadwrapper {
+@media (max-width:999px) {
+    .rightadwrapper, .leftadwrapper, .sidead {
         display: none;
+    }
+    .headerad {
+        height:60px;
+        max-width:500px;
+        width:100%;
     }
 }
 
@@ -112,8 +118,13 @@ h3 {
     :root {
         --ad-height: 0px;
     }
-    .adwrapper {
+    .adwrapper, .headerad {
         display: none;
+    }
+    .sidead {
+        min-width: 250px;
+        max-width: 350px;
+        width: calc(50% - 250px);        
     }
 }
 
