@@ -133,9 +133,13 @@ h3 {
         display: none;
     }
     .sidead {
-        min-width: 250px;
-        max-width: 350px;
-        width: calc(50% - 250px);        
+        width: 250px;        
+    }
+}
+
+@media (min-width:1200px) {
+    .sidead {
+        width: 350px;        
     }
 }
 
