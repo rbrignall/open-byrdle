@@ -80,12 +80,11 @@ h3 {
 	margin-bottom: 10px;
 }
 
-.adwrapper {
+.headeradwrapper {
     height: var(--ad-height);
     width: 100%;
     display: flex;
     justify-content: center;
-    border: 1px solid #000;
 }
 .leftadwrapper {
     float: left;
@@ -99,18 +98,21 @@ h3 {
     height: 100%;
     width: calc(50% - 250px);
     margin: 0px;
-    vertical-align: middle;
-    border: 1px solid #000;
 }
 
+.sidead {
+    display: block;
+    min-width: 250px;
+    max-width: 350px;
+}
+.headerad {
+    display: block;
+    height: 60px;
+    max-width: 500px;
+}
 @media (max-width:999px) {
     .rightadwrapper, .leftadwrapper, .sidead {
         display: none;
-    }
-    .headerad {
-        height: 60px;
-        max-width: 500px;
-        width:100%;
     }
 }
 
@@ -118,13 +120,8 @@ h3 {
     :root {
         --ad-height: 0px;
     }
-    .adwrapper, .headerad {
+    .headeradwrapper, .headerad {
         display: none;
-    }
-    .sidead {
-        min-width: 250px;
-        max-width: 350px;
-        width: calc(50% - 250px);        
     }
 }
 

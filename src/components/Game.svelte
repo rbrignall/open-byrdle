@@ -212,23 +212,20 @@
 <svelte:body on:click={board.hideCtx} on:contextmenu={board.hideCtx} />
     <div class="leftadwrapper">
         <ins class="adsbygoogle sidead"
-            style="display:block"
             data-ad-client="ca-pub-2276519097140776"
             data-ad-slot="4730612764"
-            data-full-width-responsive="false"></ins>
+            data-full-width-responsive="true"></ins>
     </div>
     <div class="rightadwrapper">
         <ins class="adsbygoogle sidead"
-            style="display:block"
             data-ad-client="ca-pub-2276519097140776"
             data-ad-slot="2571353285"
             data-full-width-responsive="true"></ins>
     </div>
 
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
-    <div class="adwrapper">
+    <div class="headeradwrapper">
         <ins class="adsbygoogle headerad"
-            style="display:block"
             data-ad-client="ca-pub-2276519097140776"
             data-ad-slot="2884507619"
             data-full-width-responsive="true"></ins>
