@@ -193,6 +193,8 @@
     
 	onMount(() => {
         (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
+        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
+        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
 		if (!(game.gameStatus === "IN_PROGRESS") && $mode === 0) setTimeout(() => (showStats = true), delay);
         if (stats.gamesPlayed === 0) {
             showImport = true;
@@ -212,23 +214,23 @@
 <svelte:body on:click={board.hideCtx} on:contextmenu={board.hideCtx} />
     <div class="leftadwrapper">
         <ins class="adsbygoogle sidead"
+            style="display:block"
             data-ad-client="ca-pub-2276519097140776"
-            data-ad-slot="4730612764"
-            data-full-width-responsive="true"></ins>
+            data-ad-slot="4730612764"></ins>
     </div>
     <div class="rightadwrapper">
         <ins class="adsbygoogle sidead"
+            style="display:block"
             data-ad-client="ca-pub-2276519097140776"
-            data-ad-slot="2571353285"
-            data-full-width-responsive="true"></ins>
+            data-ad-slot="2571353285"></ins>
     </div>
 
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
     <div class="headeradwrapper">
         <ins class="adsbygoogle headerad"
+            style="display:block"
             data-ad-client="ca-pub-2276519097140776"
-            data-ad-slot="2884507619"
-            data-full-width-responsive="true"></ins>
+            data-ad-slot="2884507619"></ins>
     </div>
 	<Header
 		bind:showRefresh

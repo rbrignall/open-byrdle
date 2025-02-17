@@ -97,13 +97,14 @@ h3 {
     max-width: 350px;
     height: 100%;
     width: calc(50% - 250px);
-    margin: 0px;
+    margin: 60px 0px;
 }
 
 .sidead {
     display: block;
     min-width: 250px;
     max-width: 350px;
+    height: 600px;
 }
 .headerad {
     display: block;
@@ -124,7 +125,6 @@ h3 {
         display: none;
     }
 }
-
 .absent,
 .present,
 .correct {
