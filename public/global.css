@@ -108,9 +108,29 @@ h3 {
 }
 .headerad {
     display: block;
-    height: 60px;
+    max-height: var(--ad-height);
+    min-width: 200px;
     max-width: 500px;
 }
+@media (min-width:320px) {
+    .headerad {
+        width: 320px;
+        height: 50px;
+    }
+}
+@media (min-width:400px) {
+    .headerad {
+        width: 400px;
+        height: 50px;
+    }
+}
+@media (min-width:500px) {
+    .headerad {
+        width: 500px;
+        height: 50px;
+    }
+}
+
 @media (max-width:999px) {
     .rightadwrapper, .leftadwrapper, .sidead {
         display: none;
