@@ -108,7 +108,7 @@ h3 {
 }
 .headerad {
     display: block;
-    height: 60px;
+    max-height: var(--ad-height);
     max-width: 500px;
 }
 @media (max-width:999px) {
