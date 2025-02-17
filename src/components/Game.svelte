@@ -230,7 +230,8 @@
         <ins class="adsbygoogle headerad"
             style="display:block"
             data-ad-client="ca-pub-2276519097140776"
-            data-ad-slot="2884507619"></ins>
+            data-ad-slot="2884507619"
+            data-ad-format="horizontal"></ins>
     </div>
 	<Header
 		bind:showRefresh
