@@ -215,22 +215,22 @@
     <div class="leftadwrapper">
         <ins class="adsbygoogle sidead"
             style="display:block"
-            data-ad-client="ca-pub-2276519097140776"
-            data-ad-slot="4730612764"></ins>
+            data-ad-client="ca-pub-3184778483057051"
+            data-ad-slot="3132059243"></ins>
     </div>
     <div class="rightadwrapper">
         <ins class="adsbygoogle sidead"
             style="display:block"
-            data-ad-client="ca-pub-2276519097140776"
-            data-ad-slot="2571353285"></ins>
+            data-ad-client="ca-pub-3184778483057051"
+            data-ad-slot="1192291618"></ins>
     </div>
 
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
     <div class="headeradwrapper">
         <ins class="adsbygoogle headerad"
             style="display:block"
-            data-ad-client="ca-pub-2276519097140776"
-            data-ad-slot="2884507619"></ins>
+            data-ad-client="ca-pub-3184778483057051"
+            data-ad-slot="4752262670"></ins>
     </div>
 	<Header
 		bind:showRefresh
