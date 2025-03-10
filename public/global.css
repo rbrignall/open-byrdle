@@ -118,16 +118,28 @@ h3 {
         height: 50px;
     }
 }
-@media (min-width:400px) {
+@media (min-width:360px) {
     .headerad {
-        width: 400px;
+        width: 360px;
         height: 50px;
+    }
+}
+@media (min-width:390px) {
+    .headerad {
+        width: 390px;
+        height: 60px;
+    }
+}
+@media (min-width:414px) {
+    .headerad {
+        width: 414px;
+        height: 60px;
     }
 }
 @media (min-width:500px) {
     .headerad {
         width: 500px;
-        height: 50px;
+        height: 60px;
     }
 }
 
