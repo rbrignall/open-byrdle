@@ -7,7 +7,7 @@
     
 </script>
 {#if imported}
-    <h3>welcome to new byrdle!</h3>
+    <h3>welcome to byrdle!</h3>
     Have you played before? You can fetch your statistics from the old web page:
     
     <div class="importstats" onclick="location.href='https://rbrignall.github.io/byrdle/handover.html';">
@@ -17,6 +17,7 @@
         Fetch my statistics
     </div>
 {/if}
+
 <h3>how to play</h3>
 
 <div>Guess the <strong>BYRDLE</strong> in {ROWS} tries. The word is related to choral music, and answers include proper nouns, plurals and musical terms in other languages. You might like to look at an <a href="/history/" target="_blank">X thread of the first ever BYRDLEs</a>.</div>
@@ -53,6 +54,11 @@
 	<div>The letter <strong>G</strong> is not in the word in any spot.</div>
 </div>
 <div>A new BYRDLE will be available at midnight each day!</div>
+
+        <div>
+            You may wish to read our <a href="https://www.byrdle.net/privacy.html">Privacy Policy</a>.
+        </div>
+
 
 <h3>The history of Byrdle</h3>
 <div>On January 11 2022, QuireMemes posted <a href="https://x.com/QuireMemes/status/1480896862978727937" target="_blank">this tweet</a>, and asked if it could be made for real, just for a bit of fun. The next day, <a href="https://x.com/QuireMemes/status/1481205826601771010" target="_blank">Byrdle went live</a>.</div>
