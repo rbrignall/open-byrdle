@@ -7,7 +7,7 @@
 	import Settings from "./settings";
 	import {
 		Share,
-		Seperator,
+		Separator,
 //		Definition,
 		Tutorial,
 		Statistics,
@@ -15,6 +15,7 @@
 		Timer,
 		Toaster,
 		ShareGame,
+        Support,
 	} from "./widgets";
 	import {
 		contractNum,
@@ -25,15 +26,18 @@
 		checkHardMode,
 		ROWS,
 		COLS,
-        SIXLETTERDAY,
 		newSeed,
 		createNewGame,
 //		seededRandomInt,
         getWordNumber,
+        wordNumToArrayNum,
 		createLetterStates,
 		words,
+        NOTICES,
+        currentNoticeNum,
+        fillNotice,
 	} from "../utils";
-	import { letterStates, hardMode, mode } from "../stores";
+	import { letterStates, hardMode, mode, seenPopUp, noticeNum } from "../stores";
 
 	export let word: string;
 	export let stats: Stats;
@@ -61,14 +65,12 @@
     function updateKey(e,i) {
         var temp = $letterStates[game.boardState[game.guesses][i]] 
         switch(temp) {
+            case "present":
+                if(!(e === "correct")) break;
             case "nil":
+            case "absent":
                 $letterStates[game.boardState[game.guesses][i]] = e;
                 break;
-            case "present":
-                $letterStates[game.boardState[game.guesses][i]] = (e === "correct" ? e : temp);
-                break;
-            default:
-                $letterStates[game.boardState[game.guesses][i]] = temp;
         }
     }
     
@@ -111,19 +113,27 @@
 		board.bounce(game.guesses - 1);
         game.gameStatus = "WIN";
 		setTimeout(() => toaster.pop(sampleArray(PRAISE[game.guesses - 1])), DELAY_INCREMENT * ROWS);
-		setTimeout(() => (showStats = true), delay * 1.4);
 		if (!modeData.modes[$mode].historical) {
+		    setTimeout(() => (showStats = true), delay * 1.4);
 			++stats.guesses[game.guesses];
 			++stats.gamesPlayed;
 			if ("currentStreak" in stats) {
-				stats.currentStreak =
-					modeData.modes[$mode].seed - stats.lastGame > modeData.modes[$mode].unit
-						? 1
-						: stats.currentStreak + 1;
+                if ("lastGameNumber" in stats) {
+                    stats.currentStreak =
+					   game.wordNumber - stats.lastGameNumber > 1
+						  ? 1
+						  : stats.currentStreak + 1;                
+                } else { // Legacy version, for users not on this current version.
+                    stats.currentStreak =
+					   modeData.modes[$mode].seed - stats.lastGame > modeData.modes[$mode].unit
+						  ? 1
+						  : stats.currentStreak + 1;
+                }
 				if (stats.currentStreak > stats.maxStreak) stats.maxStreak = stats.currentStreak;
 			}
 			stats.lastGame = modeData.modes[$mode].seed;
-			localStorage.setItem(`statistics`, JSON.stringify(stats));
+            stats.lastGameNumber = game.wordNumber;
+            localStorage.setItem(`statistics`, JSON.stringify(stats));
 		}
 	}
 
@@ -131,12 +141,13 @@
 //		++game.guesses;
         game.gameStatus = "FAIL";
         setTimeout(() => toaster.pop(word.toUpperCase()), DELAY_INCREMENT * ROWS);
-		setTimeout(() => (showStats = true), delay);
 		if (!modeData.modes[$mode].historical) {
+		    setTimeout(() => (showStats = true), delay);
 			++stats.guesses.fail;
 			++stats.gamesPlayed;
 			if ("currentStreak" in stats) stats.currentStreak = 0;
 			stats.lastGame = modeData.modes[$mode].seed;
+            stats.lastGameNumber = game.wordNumber;
 			localStorage.setItem(`statistics`, JSON.stringify(stats));
 		}
 	}
@@ -145,17 +156,46 @@
 //		modeData.modes[$mode].historical = false;
 		modeData.modes[$mode].seed = newSeed();
 		game = createNewGame($mode);
-//		word = words.words[seededRandomInt(0, words.words.length, modeData.modes[$mode].seed)];
-        word = words.words[getWordNumber() % words.words.length]
+        word = words.words[wordNumToArrayNum(getWordNumber())];
         $letterStates = createLetterStates();
 		showStats = false;
 		showRefresh = false;
 		timer.reset($mode);
-        if (SIXLETTERDAY<=getWordNumber() && COLS===5) location.reload();
+        if (COLS !== word.length) location.reload();
 	}
 
+    function toggleHistMode() {
+        $mode = ($mode + 1) % modeData.modes.length;
+        if (COLS !== word.length) location.reload();
+    }
+    
+    function prevHistGame() {
+        newHistGame(Math.max(game.wordNumber - 1, 0));
+    }
+
+    function nextHistGame() {
+        newHistGame(Math.min(game.wordNumber + 1, getWordNumber() - 1));
+    }
+    
+    function randomHistGame() {
+        newHistGame(Math.floor(Math.random() * getWordNumber()));
+    }
+    
+    function newHistGame(wordNum) {
+        game=createNewGame($mode);
+        game.wordNumber = wordNum;
+        word = words.words[wordNumToArrayNum(game.wordNumber)];
+        $letterStates = createLetterStates();
+		showStats = false;
+		showRefresh = false;
+        if (COLS !== word.length) location.reload();
+    }
+    
 	onMount(() => {
-		if (!(game.gameStatus === "IN_PROGRESS")) setTimeout(() => (showStats = true), delay);
+        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
+        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
+        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
+		if (!(game.gameStatus === "IN_PROGRESS") && $mode === 0) setTimeout(() => (showStats = true), delay);
         if (stats.gamesPlayed === 0) {
             showImport = true;
             setTimeout(() => (showTutorial = true), delay);
@@ -172,16 +212,40 @@
 </script>
 
 <svelte:body on:click={board.hideCtx} on:contextmenu={board.hideCtx} />
+    <div class="leftadwrapper">
+        <ins class="adsbygoogle sidead"
+            style="display:block"
+            data-ad-client="ca-pub-3184778483057051"
+            data-ad-slot="3132059243"></ins>
+    </div>
+    <div class="rightadwrapper">
+        <ins class="adsbygoogle sidead"
+            style="display:block"
+            data-ad-client="ca-pub-3184778483057051"
+            data-ad-slot="1192291618"></ins>
+    </div>
 
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
+    <div class="headeradwrapper">
+        <ins class="adsbygoogle headerad"
+            style="display:block"
+            data-ad-client="ca-pub-3184778483057051"
+            data-ad-slot="4752262670"></ins>
+    </div>
 	<Header
 		bind:showRefresh
 		showStats={stats.gamesPlayed > 0 || (modeData.modes[$mode].historical && !(game.gameStatus === "IN_PROGRESS"))}
+        gameNumber={game.wordNumber}
 		on:stats={() => (showStats = true)}
 		on:tutorial={() => (showTutorial = true)}
 		on:settings={() => (showSettings = true)}
 		on:reload={reload}
-	/>
+        on:histmode={toggleHistMode}
+        on:prevhistgame={prevHistGame}
+        on:nexthistgame={nextHistGame}
+        on:randhistgame={randomHistGame}
+		on:closeTutPopUp|once={() => ($seenPopUp = 1)}
+		on:closeHistTutPopUp|once={() => ($seenPopUp = 0)}	/>
     <div>
 	<Board
 		bind:this={board}
@@ -205,6 +269,13 @@
 	/>
 </main>
 
+{#if $noticeNum < currentNoticeNum() && stats.gamesPlayed > 0 && game.gameStatus === "IN_PROGRESS"}
+    <div class="notice" role="button" tabindex={0} on:click={() => noticeNum.set(currentNoticeNum())} on:keydown={() => noticeNum.set(currentNoticeNum())}>
+        <div use:fillNotice></div>
+        <span class="ok">OK</span>
+    </div>
+{/if}
+
 <Modal
 	bind:visible={showTutorial}
 >
@@ -215,17 +286,18 @@
 
 <Modal bind:visible={showStats}>
 		<Statistics data={stats} />
-		<Distribution distribution={stats.guesses} guesses={game.guesses} active={game.gameStatus==="IN_PROGRESS"} />
-	<Seperator visible={!(game.gameStatus === "IN_PROGRESS")}>
+		<Distribution distribution={stats.guesses} guesses={game.guesses} gameWon={game.gameStatus==="WIN"} />
+	<Separator visible={!(game.gameStatus === "IN_PROGRESS")}>
+		<ShareGame slot="1" {word} />
+		<Share slot="2" state={game} />
 		<Timer
-			slot="1"
+			slot="3"
 			bind:this={timer}
 			on:timeup={() => (showRefresh = true)}
 			on:reload={reload}
 		/>
-		<Share slot="2" state={game} />
-	</Seperator>
-	<ShareGame />
+		<Support slot="4" />
+	</Separator>
 </Modal>
 
 <Modal bind:visible={showSettings}>

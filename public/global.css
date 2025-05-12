@@ -18,7 +18,10 @@
 	--fs-large: 36px;
 
 	--game-width: 500px;
-
+    --header-height: 51px;
+    --keyboard-height: 186px;
+    --ad-height: 61px;
+    
 	--fg-primary: #d7dadc;
 	--fg-secondary: #818384;
 	--icon-color: #565758;
@@ -76,6 +79,84 @@ h3 {
 	text-transform: uppercase;
 	margin-bottom: 10px;
 }
+
+.headeradwrapper {
+    height: var(--ad-height);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.leftadwrapper {
+    float: left;
+}
+.rightadwrapper {
+    float: right;
+}
+.rightadwrapper, .leftadwrapper {
+    min-width: 250px;
+    max-width: 350px;
+    height: 100%;
+    width: calc(50% - 250px);
+    margin: 60px 0px;
+}
+
+.sidead {
+    display: block;
+    min-width: 250px;
+    max-width: 350px;
+    height: 600px;
+}
+.headerad {
+    display: block;
+    max-height: var(--ad-height);
+    min-width: 200px;
+    max-width: 500px;
+}
+@media (min-width:320px) {
+    .headerad {
+        width: 320px;
+        height: 50px;
+    }
+}
+@media (min-width:360px) {
+    .headerad {
+        width: 360px;
+        height: 50px;
+    }
+}
+@media (min-width:390px) {
+    .headerad {
+        width: 390px;
+        height: 60px;
+    }
+}
+@media (min-width:414px) {
+    .headerad {
+        width: 414px;
+        height: 60px;
+    }
+}
+@media (min-width:500px) {
+    .headerad {
+        width: 500px;
+        height: 60px;
+    }
+}
+
+@media (max-width:999px) {
+    .rightadwrapper, .leftadwrapper, .sidead {
+        display: none;
+    }
+}
+
+@media (min-width:1000px) {
+    :root {
+        --ad-height: 0px;
+    }
+    .headeradwrapper, .headerad {
+        display: none;
+    }
+}
 .absent,
 .present,
 .correct {
@@ -94,3 +175,59 @@ a:visited {
     text-align: center;
     vertical-align: middle;
 }
+.notice, .tutorial {
+	--padding: 10px;
+	font-size: var(--fs-small);
+	text-transform: none;
+	letter-spacing: initial;
+    width: max-content;
+	max-width: min(var(--game-width), 95vw);
+	display: flex;
+	align-items: center;
+	padding: var(--padding);
+	border-radius: 4px;
+	color: var(--bg-primary);
+	background: var(--fg-primary);
+	z-index: 1;
+}
+.notice {
+  position: fixed;
+  top: var(--header-height);
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, 50%);
+  font-weight: 500;
+}
+.notice div p {
+    margin: 5px 0px;
+}
+.tutorial {
+	position: absolute;
+	top: var(--header-height);
+	left: 8px;
+	--arrow-size: 10px;    
+	font-weight: 700;
+}
+.tutorial::before {
+	content: "";
+	position: absolute;
+	left: 40px;
+	transform: translate(-50%);
+	top: calc(-2 * var(--arrow-size));
+	border: var(--arrow-size) solid transparent;
+	border-bottom: var(--arrow-size) solid var(--fg-primary);
+}
+.ok {
+	padding: 10px;
+	margin-left: var(--padding);
+    margin-top: auto;
+	border-radius: 4px;
+	color: white;
+	background: var(--color-correct);
+	cursor: pointer;
+}
+@media (max-height: 600px) {
+    :root {
+        --keyboard-height: 126px;
+    }
+} 

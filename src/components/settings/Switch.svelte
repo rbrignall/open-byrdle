@@ -3,7 +3,15 @@
 	export let disabled = false;
 </script>
 
-<div on:click={(e) => !disabled && (value = !value)} class:checked={value} {disabled} />
+<div 
+    class:checked={value} {disabled}
+    aria-checked={value}
+    role="switch"
+    tabindex={0}
+    on:click={(e) => !disabled && (value = !value)} 
+    on:keydown={(e) => !disabled && (value = !value)} 
+    >
+</div>
 
 <style lang="scss">
 	div[disabled="true"] {

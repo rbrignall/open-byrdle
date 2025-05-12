@@ -1,16 +1,14 @@
+import seedrandom from "seedrandom";
 import { GameMode } from "./enums";
-import wordLists from "./words_5_6";
+import { createWordLists, answerLength } from "./words_5_6";
 
-export const SIXLETTERDAY = 110;
-
-export const ROWS = 6;
-
-export const COLS = ((getWordNumber() < SIXLETTERDAY) ? 5 : 6);
+// TODO: Put COLS in the store and redraw gameboard without reloading
+export const COLS = answerLength(wordNumToArrayNum(storedWordNumber()));
+export const ROWS = COLS + 1;
 
 export const words = {
-	words: wordLists.words,
-    valid: ((getWordNumber() < SIXLETTERDAY) ? wordLists.validFive : wordLists.validSix),
-	contains: (word: string) => {
+    ...createWordLists(COLS),
+    contains: (word: string) => {
 		return words.words.includes(word) || words.valid.includes(word);
 	},
 };
@@ -27,43 +25,6 @@ export function checkHardMode(boardState: string[], evaluations: LetterState[][]
 		}
 	}
 	return { pos: -1, char: "", type: "absent" };
-}
-
-export function getRowData(n: number, boardState: string[], evaluations: LetterState[][]) {
-	const wordData = {
-		// letters not contained
-		not: [],
-		// for letters contained in the word that are not the same as any that are in the correct place
-		contained: new Set<string>(),
-		letters: Array.from({ length: COLS }, () => ({ val: null, not: new Set<string>() })),
-	};
-	for (let row = 0; row < n; ++row) {
-		for (let col = 0; col < COLS; ++col)
-			if (evaluations[row][col] === "present") {
-				wordData.contained.add(boardState[row][col]);
-				wordData.letters[col].not.add(boardState[row][col]);
-			} else if (evaluations[row][col] === "correct") {
-				wordData.contained.delete(boardState[row][col]);
-				wordData.letters[col].val = boardState[row][col];
-			} else {
-				wordData.not.push(boardState[row][col]);
-			}
-	}
-	let exp = "";
-	for (let i = 0; i < COLS; ++i) {
-		exp += wordData.letters[i].val
-			? wordData.letters[i].val
-			: `[^${[...wordData.not, ...wordData.letters[i].not].join(" ")}]`;
-	}
-	return (word: string) => {
-		if (new RegExp(exp).test(word)) {
-			for (const char of wordData.contained) {
-				if (!word.includes(char)) return false;
-			}
-			return true;
-		}
-		return false;
-	};
 }
 
 export function getState(word: string, guess: string): LetterState[] {
@@ -115,26 +76,87 @@ export const modeData: ModeData = {
 			seed: newSeed(),
 			historical: false,
 			streak: true,
-		}
-	]
+		},
+		{
+			name: "Historical",
+			unit: 86400000,
+			start: 1642370400000,	// 17/01/2022
+			seed: newSeed(),
+			historical: true,
+			streak: false,
+		},	
+    ]
 };
 
-export function getWordNumber() {
+export function storedWordNumber() {
+    // Utility to capture stored word number before Svelte loads
+    // Must default to getWordNumber() if nothing in store
+    const currMode = (JSON.parse(localStorage.getItem("mode")!) as GameMode || 0)
+    let currGameState: GameState 
+    
+    if (currMode === 0) {
+        currGameState = JSON.parse(localStorage.getItem("gameState")!)
+        if(!currGameState || !currGameState.wordNumber)
+            return getWordNumber()
+        else
+            return currGameState.wordNumber
+    }
+    else {
+        currGameState = JSON.parse(localStorage.getItem("histState")!)
+        if(!currGameState)
+            return getWordNumber() - 1
+        else
+            return currGameState.wordNumber
+    }
+}
+
+export function getWordNumber() { // This is 1 less than the game number. No % used.
     const numbleOneDate = new Date(2022,0,12,0,0,0,0).setHours(0,0,0,0)
     const now = new Date().setHours(0,0,0,0)
     const msInDay = 86400000
-    return Math.floor((now - numbleOneDate) / msInDay) //% WORDS.length
-//	return Math.round((modeData.modes[mode].seed - modeData.modes[mode].start) / modeData.modes[mode].unit) + 1;
+    return Math.round((now - numbleOneDate) / msInDay) 
 }
 
-//export function seededRandomInt() { //min: number, max: number, seed: number) {
-	//const rng = seedrandom(`${seed}`);
-	//return Math.floor(min + (max - min) * rng());
-//    const numbleOneDate = new Date(2022,0,12,0,0,0,0).setHours(0,0,0,0)
-//    const now = new Date().setHours(0,0,0,0)
-//    const msInDay = 86400000
-//    return Math.floor((now - numbleOneDate) / msInDay) //% WORDS.length
-//}
+// Computes x^y mod p
+export function power(x:number, y:number, p:number) {
+    // Initialize result
+    let res = 1; 
+   
+    // Update x if it is more
+    // than or equal to p
+    x = x % p; 
+   
+    while (y > 0) {
+           
+    // If y is odd, multiply x with result
+    if (y % 2 != 0)
+        res = (res * x) % p;
+   
+    // y must be even now
+    y = y >> 1; // y = y/2
+    x = (x * x) % p;
+    }
+    return res;
+}
+
+export function wordNumToArrayNum(wordNum:number) {
+    // A selection of 70 of the primitive roots modulo words.words.length+1 (=317)
+    // This should keep us going for a good wee while!
+    const PRIME = 317;
+    const ROOTS = [30, 32, 33, 35, 41, 45, 46, 47, 48, 50, 
+                   52, 55, 56, 62, 68, 69, 71, 72, 74, 75, 
+                   76, 78, 80, 84, 86, 88, 91, 93, 97, 98, 
+                   102, 106, 107, 108, 109, 111, 115, 116, 117, 118, 
+                   119, 120, 122, 125, 126, 127, 128, 129, 130, 132, 
+                   133, 134, 137, 139, 140, 143, 146, 147, 151, 153, 
+                   154, 155, 158, 159, 162, 163, 164, 166, 170, 171]; 
+    if (wordNum < PRIME-1)
+        return wordNum;
+    else {
+        var rootnum = Math.floor(wordNum/(PRIME-1))-1;
+        return PRIME + power( ROOTS[rootnum],wordNum%(PRIME-1),PRIME )-2;
+    }
+}
 
 export const DELAY_INCREMENT = 150;
 
@@ -149,40 +171,77 @@ export const PRAISE = [
         "Magnificat!",
         "Jubilate!",
         "My spirit sang all day",
-        "Jauchzet, frohlocket!"
+        "Jauchzet, frohlocket!",
+        "O fortuna!"
     ],
     [
         "And all the people rejoiced!",
         "O Lord make haste to help us",
         "A great and mighty wonder",
-        "O clap your hands"
+        "O clap your hands",
+        "Comfort ye, my people"
     ],
     [
         "Here endeth the lesson",
         "One guess for each voice part, eh?",
         "We'll treat that as the warm-up",
-        "Dies irae"
+        "Dies irae",
+        "Once more, from the top!"
     ],
     [
-        "Were you nodding off during the sermon?",
+        "Kyrie eleison",
         "A Byrdle 5-part mess",
         "Bit more breath control next time",
-        "Helps to watch the conductor",
+        "Expectans expectavi",
         "Tripped over your cassock"
     ],[
         "This took you almost as long as Psalm 119!",
         "Tristis est anima mea",
-        "You're flat!",
+        "Miserere mei",
         "Requiem aeternam"
-    ]   
+    ],[
+        "This took you longer than Psalm 119!",
+        "As Slow As Possible",
+        "Molto lento",
+        "De profundis"
+    ]      
 ];
+
+export const NOTICES = [
+    {
+        message: "<p>Dear players,</p><p>Sorry if the switch to 6 letters was a surprise! Future changes will be announced via these notices.</p><p>Byrdle will now use 6 letter words (and 7 guesses) until at least early August 2022. I'm still deciding what will happen then...</p><p>Thanks for playing, and I hope you enjoy Byrdle 6!</p>", 
+        showfrom: new Date(2022,4,4,0,0,0,0),
+    },
+    {
+        message: "<p>Byrdle tip!</p><p>No 6-letter answer is the plural of a 5-letter answer. So, TENORS will not appear (but BASSES could).</p>", 
+        showfrom: new Date(2022,4,14,0,0,0,0),
+    },
+    {
+        message: "<h3>(One-off) shameless plug</h3><p>Are you interested in a new daily word game?</p><p>Composer Ben Ponniah and I developed a game that combines logical and linguistic deduction, called <a href=\"https://susie.rbrignall.org.uk/\" target=\"_blank\">SUSIE</a>. I hope you like it!</p>", 
+        showfrom: new Date(2022,4,28,0,0,0,0),
+    },
+    {
+        message: "<h3>After 6 letters...</h3><p>In mid-November, Byrdle will return to 5 letters for a few days, and then it will use words that have appeared before.</p><p>The words will appear in a different order: some days 5 letters, some days 6, and this is how Byrdle will continue for as long as you keep playing.</p><p>Thanks for continuing to play Byrdle!</p>", 
+        showfrom: new Date(2022,8,1,0,0,0,0),
+    }
+
+];
+
+export function currentNoticeNum() {
+    let today = new Date();
+    return (NOTICES.length - NOTICES.slice().reverse().findIndex(msg => (msg["showfrom"] <= today)) - 1);
+}
+
+export function fillNotice(node: HTMLElement) {
+    node.innerHTML = NOTICES[currentNoticeNum()]["message"];
+}
 
 export function createNewGame(mode: GameMode): GameState {
 	return {
         gameStatus: "IN_PROGRESS",
 		guesses: 0,
 		time: modeData.modes[mode].seed,
-		wordNumber: getWordNumber(),
+		wordNumber: (modeData.modes[mode].historical ? getWordNumber() - 1 : getWordNumber()),
 		validHard: true,
         boardState: Array(ROWS).fill(""),
         evaluations: Array.from({ length: ROWS }, () => (Array(COLS).fill("nil"))),
@@ -194,19 +253,21 @@ export function createDefaultStats(mode: GameMode): Stats {
 
     const urlStats = new URLSearchParams(window.location.search);
 	const stats = {
-		gamesPlayed: parseInt(urlStats.get("p")) || 0,
-		lastGame: parseInt(urlStats.get("l")) || 0,
-		guesses: {
-			fail: parseInt(urlStats.get("fail")) || 0,
-			1: parseInt(urlStats.get("g1")) || 0,
-			2: parseInt(urlStats.get("g2")) || 0,
-			3: parseInt(urlStats.get("g3")) || 0,
-			4: parseInt(urlStats.get("g4")) || 0,
-			5: parseInt(urlStats.get("g5")) || 0,
-			6: parseInt(urlStats.get("g6")) || 0,
+		gamesPlayed: parseInt(urlStats.get("p")!) || 0,
+		lastGame: parseInt(urlStats.get("l")!) || 0,
+        lastGameNumber: 0,
+        guesses: {
+			fail: parseInt(urlStats.get("fail")!) || 0,
+			1: parseInt(urlStats.get("g1")!) || 0,
+			2: parseInt(urlStats.get("g2")!) || 0,
+			3: parseInt(urlStats.get("g3")!) || 0,
+			4: parseInt(urlStats.get("g4")!) || 0,
+			5: parseInt(urlStats.get("g5")!) || 0,
+			6: parseInt(urlStats.get("g6")!) || 0,
+            7: 0,
 		},
-		currentStreak: parseInt(urlStats.get("cs")) || 0,
-		maxStreak: parseInt(urlStats.get("ms")) || 0,
+		currentStreak: parseInt(urlStats.get("cs")!) || 0,
+		maxStreak: parseInt(urlStats.get("ms")!) || 0,
         imported: false,
 	};
 	if (stats.gamesPlayed === 0) return stats;
@@ -245,5 +306,3 @@ export function createLetterStates(): { [key: string]: LetterState; } {
 		z: "nil",
 	};
 }
-
-export const definitions = new Map<string, Promise<DictionaryEntry>>();

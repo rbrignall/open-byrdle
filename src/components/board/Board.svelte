@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getRowData, words, ROWS, COLS } from "../../utils";
+	import { words, ROWS, COLS } from "../../utils";
 
 	import Row from "./Row.svelte";
 //	import ContextMenu from "../widgets/ContextMenu.svelte";
@@ -26,23 +26,18 @@
 	let y = 0;
 	let word = "";
     let innerHeight;
+    let innerWidth;
 
-	function context(cx: number, cy: number, num: number, val: string) {
-		if (guesses >= num) {
-			x = cx;
-			y = cy;
-			showCtx = true;
-			word = guesses > num ? val : "";
+    function getMaxWidth(w,h) {
+        return Math.floor(Math.min(w,h * COLS / ROWS,460 * COLS / ROWS));
+    }
+    function getMaxHeight(w,h) {
+        return Math.floor(Math.min(w * ROWS / COLS,h,460));
+    }
 
-			const match = getRowData(num, boardState, evaluations);
-			pAns = words.words.filter((w) => match(w)).length;
-			pSols = pAns + words.valid.filter((w) => match(w)).length;
-		}
-	}
 </script>
-<svelte:window bind:innerHeight={innerHeight} />
-
-<div class="board" id="boardid" style="width: {COLS * Math.floor(Math.min(Math.floor(innerHeight*(4/7)),420)/ROWS)}px; height: {Math.min(Math.floor(innerHeight*(4/7)),420)}px;">
+<svelte:window bind:innerHeight={innerHeight} bind:innerWidth={innerWidth} />
+<div class="board" id="boardid" style="max-width: {getMaxWidth(innerWidth,innerHeight)}px; width: calc(({innerHeight}px - var(--header-height) - var(--keyboard-height) - var(--ad-height)) * {COLS /ROWS}); max-height: {getMaxHeight(innerWidth,innerHeight)}px; height: calc({innerHeight}px - var(--header-height) - var(--keyboard-height) - var(--ad-height));">
 	{#each value as _, i}
 		<Row
 			num={i}
@@ -50,7 +45,6 @@
 			bind:this={rows[i]}
 			bind:value={value[i]}
 			evaluation={evaluations[i]}
-			on:ctx={(e) => context(e.detail.x, e.detail.y, i, value[i])}
 		/>
 	{/each}
 </div>

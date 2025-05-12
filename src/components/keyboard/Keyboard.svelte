@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createEventDispatcher, onDestroy, onMount } from "svelte/internal";
+	import { createEventDispatcher, onDestroy, onMount } from "svelte";
 	import { letterStates, mode } from "../../stores";
 	import { COLS, keys } from "../../utils";
 	import Key from "./Key.svelte";
@@ -90,18 +90,20 @@
 <style>
 	.keyboard {
 		width: 100%;
+        height: var(--keyboard-height);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-bottom: 2px;
+		margin-bottom: 0px;
 	}
 	.row {
 		width: 100%;
 		display: flex;
+        flex-grow: 1;
 		margin: 0 auto 4px;
 		padding: 0 4px;
         touch-action: manipulation;
-	}
+	}    
 	.row:nth-of-type(2) {
 		padding: 0 30px;
 	}

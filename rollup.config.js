@@ -1,17 +1,16 @@
 import svelte from 'rollup-plugin-svelte';
-import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import json from "@rollup/plugin-json";
 import livereload from 'rollup-plugin-livereload';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import { createRequire } from 'module';
 
+const require = createRequire(import.meta.url);
 const production = !process.env.ROLLUP_WATCH;
-const legacy = !process.env.IS_LEGACY_BUILD;
-
 
 function serve() {
 	let server;
@@ -37,7 +36,7 @@ function serve() {
 export default {
 	input: 'src/main.ts',
 	output: {
-		sourcemap: true,
+		sourcemap: !production,
 		format: 'iife',
 		name: 'app',
 		file: 'public/build/bundle.js'
@@ -50,31 +49,6 @@ export default {
 				dev: !production
 			}
 		}),
-        // Legacy 
-        legacy && babel({
-            extensions: [".js", ".mjs", ".html", ".svelte"],
-            babelHelpers: 'runtime',
-            exclude: ["node_modules/@babel/**"],
-            presets: [
-                [
-                    "@babel/preset-env",
-                    {
-                        targets: "> 0.25%, not dead",//{
-                            //"browsers": "last 2 versions, safari >= 7, ios_saf >= 9, chrome >= 52"
-                        //},//
-                    },
-                ],
-            ],
-            plugins: [
-                "@babel/plugin-syntax-dynamic-import",
-                [
-                    "@babel/plugin-transform-runtime",
-                    {
-                        useESModules: true,
-                    },
-                ],
-            ],
-        }),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),

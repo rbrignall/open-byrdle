@@ -14,9 +14,15 @@
 </script>
 
 
-	<div class:visible class="overlay" on:click|self={close}>
+	<div class:visible class="overlay" 
+        role="button" tabindex={0} 
+        on:click|self={close}
+        on:keydown|self={close}>
 		<div class="modal">
-			<div class="exit" on:click={close}>
+			<div class="exit" 
+                role="button" tabindex={0} 
+                on:click={close}
+                on:keydown={close}>
 				<GameIcon>
 					<path
 						d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
@@ -61,7 +67,7 @@
 		background: var(--bg-primary);
 		max-width: var(--game-width);
 /*		height: min-content;*/
-		max-height: 90%;
+		max-height: calc(90% - var(--ad-height));
 		width: 100%;
 		overflow-y: auto;
 		border-radius: 0px;
@@ -69,7 +75,7 @@
 		--modal-padding: 16px;
 		padding: var(--modal-padding);
 		padding-top: calc(2 * var(--modal-padding));
-		margin: 5% auto;
+		margin: calc(5% + var(--ad-height)) auto 5% auto;
 		transition: all 0.3s ease;
 		> :global(*:not(h3)) {
 			margin-bottom: 15px;

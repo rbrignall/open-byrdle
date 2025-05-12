@@ -4,12 +4,8 @@ type Words = WordData & {
 };
 
 type WordData = {
-	/** A list of possible words to guess */
-	words: string[];
-	/** A list of words that are valid when input by the user but will never get chosen as the word to guess */
-	validFive: string[];
-	validSix: string[];
-    valid: string [];
+	words: string[],
+    valid: string [],
 };
 
 type RowData = {
@@ -39,36 +35,12 @@ type Word = {
 	getState: (char: string, index: number, mode: GameMode) => LetterState,
 };
 
-type DictionaryEntry = {
-	word: string;
-	phonetic: string;
-	phonetics: Phonetic[];
-	origin: string;
-	meanings: Meaning[];
-};
-
-type Meaning = {
-	partOfSpeech: string;
-	definitions: Definition[];
-};
-
-type Definition = {
-	definition: string;
-	synonyms: string[];
-	antonyms: any[];
-	example?: string;
-};
-
-type Phonetic = {
-	text: string;
-	audio: string;
-};
-
 type Stats = {
 	gamesPlayed: number;
 	currentStreak?: number;
 	maxStreak?: number;
 	lastGame: number;
+    lastGameNumber: number;
 	guesses: Guesses;
     imported: boolean;
 };
@@ -80,6 +52,7 @@ type Guesses = {
 	"4": number;
 	"5": number;
 	"6": number;
+    "7": number;
 	"fail": number;
 };
 
@@ -94,7 +67,6 @@ type Mode = {
 	start: number,
 	seed: number,
 	historical: boolean,
-	icon?: string,
 	streak?: boolean,
 };
 

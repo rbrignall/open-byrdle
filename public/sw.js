@@ -1,8 +1,8 @@
 // Increase the v number when the app is updated
-const staticCacheName = "byrdle-v5.0.0";
+
+const staticCacheName = "byrdle-v6.0.beta";
 
 const filesToCache = [
-	"./",
 	"./global.css",
 	"./index.html",
 	"./manifest.json",
@@ -19,26 +19,33 @@ self.addEventListener('install', event => {
     .then(cache => {
       return cache.addAll(filesToCache);
     })
+    .then(function() {
+          return self.skipWaiting();
+    })
   );
 });
 
 
 self.addEventListener('fetch', event => {
+  // Do not cache history page:
+  if(event.request.url.includes("/history/"))
+    return fetch(event.request);
+  else
   //console.log('Fetch event for ', event.request.url);
-  event.respondWith(
-    caches.match(event.request)
-    .then(response => {
-      if (response) {
-        //console.log('Found ', event.request.url, ' in cache');
-        return response;
-      }
-      //console.log('Network request for ', event.request.url);
-      return fetch(event.request)
+    event.respondWith(
+      caches.match(event.request)
       .then(response => {
-        return caches.open(staticCacheName).then(cache => {
-            cache.put(event.request.url, response.clone());
-            return response;
-        });
+        if (response) {
+          //console.log('Found ', event.request.url, ' in cache');
+          return response;
+        }
+        //console.log('Network request for ', event.request.url);
+        return fetch(event.request)
+        .then(response => {
+            return caches.open(staticCacheName).then(cache => {
+                cache.put(event.request.url, response.clone());
+                return response;
+            });
       });
 
     }).catch(error => {
