@@ -7,7 +7,11 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<div class={state} class:big={letter.length !== 1} on:click={() => dispatch("keystroke", letter)}>
+<div class={state} class:big={letter.length !== 1} 
+    role="button"
+    tabindex={0}
+    on:click={() => dispatch("keystroke", letter)}
+    on:keydown={() => dispatch("keystroke", letter)}>
 	{letter}<slot />
 </div>
 

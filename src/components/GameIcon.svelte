@@ -22,9 +22,14 @@
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
+    role="button"
+    tabindex={0}
     on:click={onClick}
+    on:keydown={onClick}
     on:mouseover={mouseOver}
+    on:focus={mouseOver}
     on:mouseleave={mouseLeave}
+    on:blur={mouseLeave}
 	on:mousemove={mouseMove}
     >
 	<slot />

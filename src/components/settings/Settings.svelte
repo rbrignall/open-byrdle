@@ -39,10 +39,17 @@
 <!-- not currently supported, see https://github.com/sveltejs/svelte/issues/3105 -->
 <!-- <svelte:body class:light={!$darkTheme} class:colorblind={$colorBlindTheme} class:fancyfont={$fancyFont} /> -->
 <div class="outer">
-	<div class="settings-top">
+	<div class="settings-top" role="list">
 		<h3>settings</h3>
 		<div
+            role="button"
+            tabindex={0}
 			on:click={() => {
+				if (!validHard) {
+					toaster.pop("Game has already violated hard mode");
+				}
+			}}
+			on:keydown={() => {
 				if (!validHard) {
 					toaster.pop("Game has already violated hard mode");
 				}

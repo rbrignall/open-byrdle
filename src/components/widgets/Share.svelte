@@ -23,7 +23,13 @@
     <Twitter class="share-button" text="{stats}" {url} />
     <WhatsApp class="share-button" text="{stats} {url}" />
     <div class="copybutton"
+        role="button"
+        tabindex={0}
         on:click={() => {
+            navigator.clipboard.writeText(stats.concat("https://www.byrdle.net"));
+		    toaster.pop("Copied to clipboard");    
+        }}
+        on:keydown={() => {
             navigator.clipboard.writeText(stats.concat("https://www.byrdle.net"));
 		    toaster.pop("Copied to clipboard");    
         }}

@@ -270,7 +270,7 @@
 </main>
 
 {#if $noticeNum < currentNoticeNum() && stats.gamesPlayed > 0 && game.gameStatus === "IN_PROGRESS"}
-    <div class="notice" on:click={() => noticeNum.set(currentNoticeNum())}>
+    <div class="notice" role="button" tabindex={0} on:click={() => noticeNum.set(currentNoticeNum())} on:keydown={() => noticeNum.set(currentNoticeNum())}>
         <div use:fillNotice></div>
         <span class="ok">OK</span>
     </div>
