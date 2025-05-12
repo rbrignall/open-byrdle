@@ -1,4 +1,3 @@
-import seedrandom from "seedrandom";
 import { GameMode } from "./enums";
 import { createWordLists, answerLength } from "./words_5_6";
 
