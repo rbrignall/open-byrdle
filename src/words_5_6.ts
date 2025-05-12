@@ -73,7 +73,7 @@ const answers = [
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-function chunkSubstr(str, size, i) {
+function chunkSubstr(str:string, size:number, i:number) {
   const numChunks = Math.ceil(str.length / size)
   const chunks = new Array(numChunks)
 
@@ -83,7 +83,7 @@ function chunkSubstr(str, size, i) {
   return chunks
 }
 
-export function answerLength(gameNum) {
+export function answerLength(gameNum:number) {
     return answers[gameNum].length;
 }
 

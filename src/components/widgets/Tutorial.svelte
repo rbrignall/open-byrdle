@@ -10,7 +10,7 @@
     <h3>welcome to byrdle!</h3>
     Have you played before? You can fetch your statistics from the old web page:
     
-    <div class="importstats" onclick="location.href='https://rbrignall.github.io/byrdle/handover.html';">
+    <div class="importstats" on:click={location.href="https://rbrignall.github.io/byrdle/handover.html"}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z" />
         </svg>
