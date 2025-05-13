@@ -5,24 +5,28 @@
 
 	export let visible = false;
 
-	const dispach = createEventDispatcher();
+	const dispatch = createEventDispatcher();
 
 	function close() {
 		visible = false;
-		dispach("close");
+		dispatch("close");
 	}
+    function keyclose(event) {
+        if(event.key===" " || event.key==="Spacebar")
+            close();
+    }
 </script>
 
 
 	<div class:visible class="overlay" 
         role="button" tabindex={0} 
         on:click|self={close}
-        on:keydown|self={close}>
+        on:keydown|self={keyclose}>
 		<div class="modal">
 			<div class="exit" 
-                role="button" tabindex={0} 
+                role="button" tabindex={1} 
                 on:click={close}
-                on:keydown={close}>
+                on:keydown={keyclose}>
 				<GameIcon>
 					<path
 						d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
