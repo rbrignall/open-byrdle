@@ -11,7 +11,7 @@
     role="button"
     tabindex={0}
     on:click={() => dispatch("keystroke", letter)}
-    on:keydown={() => dispatch("keystroke", letter)}>
+    on:keydown={(e) => {if(e.key===" " || e.key==="Spacebar") dispatch("keystroke", letter)}}>
 	{letter}<slot />
 </div>
 
