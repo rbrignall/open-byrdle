@@ -20,7 +20,7 @@
 	--game-width: 500px;
     --header-height: 51px;
     --keyboard-height: 186px;
-    --keyboard-ad-height: 50px;
+    --keyboard-ad-height: 0px; /*50px;*/
     --subtitle-ad-height: 90px;
     --header-ad-height: 100px;
     
@@ -97,6 +97,7 @@ h3 {
 }
 
 .keyboardadwrapper, .keyboardad {
+    display: none;
     height: var(--keyboard-ad-height);
     max-height: var(--keyboard-ad-height);
 }
