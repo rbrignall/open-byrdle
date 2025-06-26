@@ -37,7 +37,7 @@
 
 </script>
 <svelte:window bind:innerHeight={innerHeight} bind:innerWidth={innerWidth} />
-<div class="board" id="boardid" style="max-width: {getMaxWidth(innerWidth,innerHeight)}px; width: calc(({innerHeight}px - var(--header-height) - var(--keyboard-height) - var(--ad-height)) * {COLS /ROWS}); max-height: {getMaxHeight(innerWidth,innerHeight)}px; height: calc({innerHeight}px - var(--header-height) - var(--keyboard-height) - var(--ad-height));">
+<div class="board" id="boardid" style="max-width: {getMaxWidth(innerWidth,innerHeight)}px; width: calc(({innerHeight}px - var(--header-height) - var(--keyboard-height) - var(--header-ad-height) - var(--subtitle-ad-height) - var(--keyboard-ad-height)) * {COLS /ROWS}); max-height: {getMaxHeight(innerWidth,innerHeight)}px; height: calc({innerHeight}px - var(--header-height) - var(--keyboard-height) - var(--header-ad-height) - var(--subtitle-ad-height) - var(--keyboard-ad-height));">
 	{#each value as _, i}
 		<Row
 			num={i}
