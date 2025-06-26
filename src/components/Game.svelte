@@ -203,10 +203,10 @@
             scope.Config.get('double_mpu','right-sticky').display('slot-2');
             scope.Config.get('mobile_banner').display('slot-3');
             scope.Config.get('leaderboard').display('slot-4');
-            scope.Config.get('mobile_mpu').display('slot-5');
+            //scope.Config.get('mobile_mpu').display('slot-5');
             scope.Config.get('video').display('slot-6');
             //scope.Config.get('desktop_takeover').display('slot-5');
-            //scope.Config.get('mobile_takeover').display('slot-6');
+            scope.Config.get('mobile_takeover').display('slot-5');
             // Based on your layout, here are the responsive tags. The placement will change based on screen width.
             // With the mobile breakpoint set by default at max-width:1024px
         });
