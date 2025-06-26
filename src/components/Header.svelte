@@ -87,14 +87,20 @@
 		</GameIcon>
 	</div>
        {#if $seenPopUp === 2}
-		<div transition:scale class="tutorial" on:click={() => dispatch("closeTutPopUp")}>
-			Press the clock to play historical Byrdles!
-			<span class="ok">OK</span>
+		<div transition:scale class="tutorial" 
+            role="button" tabindex={0} 
+            on:click={() => dispatch("closeTutPopUp")} 
+            on:keydown={() => dispatch("closeTutPopUp")}>
+			     Press the clock to play historical Byrdles!
+			     <span class="ok">OK</span>
 		</div>
     {:else if modeData.modes[$mode].historical && $seenPopUp === 1 }
-		<div transition:scale class="tutorial" on:click={() => dispatch("closeHistTutPopUp")}>
-			Tap the clock to return to normal mode. Use the arrows to change game, or roll the die for a random game.
-			<span class="ok">OK</span>
+		<div transition:scale class="tutorial" 
+            role="button" tabindex={0} 
+            on:click={() => dispatch("closeHistTutPopUp")}
+            on:keydown={() => dispatch("closeHistTutPopUp")}>
+			     Tap the clock to return to normal mode. Use the arrows to change game, or roll the die for a random game.
+			     <span class="ok">OK</span>
 		</div>
 	{/if}
 </header>

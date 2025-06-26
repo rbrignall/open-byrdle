@@ -17,8 +17,13 @@
     <div class="button twitterbutton">
 	   <a href="./history/" target="_blank">Previous</a>
     </div>
-    <div class="button todaybutton" id="today" 
+    <div role="button" class="button todaybutton" id="today" 
+        tabindex={0}
         on:click={() => {
+            document.getElementById('today').innerHTML = word.toUpperCase();
+            setTimeout(function() {document.getElementById('today').innerHTML = "Today";},2000);
+        }}
+        on:keydown={() => {
             document.getElementById('today').innerHTML = word.toUpperCase();
             setTimeout(function() {document.getElementById('today').innerHTML = "Today";},2000);
         }}

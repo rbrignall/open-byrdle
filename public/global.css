@@ -20,7 +20,9 @@
 	--game-width: 500px;
     --header-height: 51px;
     --keyboard-height: 186px;
-    --ad-height: 61px;
+    --keyboard-ad-height: 0px; /*50px;*/
+    --subtitle-ad-height: 90px;
+    --header-ad-height: 100px;
     
 	--fg-primary: #d7dadc;
 	--fg-secondary: #818384;
@@ -79,12 +81,33 @@ h3 {
 	text-transform: uppercase;
 	margin-bottom: 10px;
 }
-
-.headeradwrapper {
-    height: var(--ad-height);
+.headeradwrapper, .keyboardadwrapper, .subtitleadwrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: center;    
+}
+
+.headeradwrapper, .headerad {
+    height: var(--header-ad-height);
+    max-height: var(--header-ad-height);
+}
+.headerad {
+    width:  320px;
+    margin: 0px auto;
+}
+
+.keyboardadwrapper, .keyboardad {
+    display: none;
+    height: var(--keyboard-ad-height);
+    max-height: var(--keyboard-ad-height);
+}
+.keyboardad {
+    margin: 0px auto;
+}
+
+.subtitleadwrapper, .subtitlead {
+    max-height: var(--subtitle-ad-height);  
+    height: var(--subtitle-ad-height);  
 }
 .leftadwrapper {
     float: left;
@@ -94,7 +117,9 @@ h3 {
 }
 .rightadwrapper, .leftadwrapper {
     min-width: 250px;
-    max-width: 350px;
+    max-width: 300px;
+    max-height: 600px;
+    border: 1px;
     height: 100%;
     width: calc(50% - 250px);
     margin: 60px 0px;
@@ -103,57 +128,64 @@ h3 {
 .sidead {
     display: block;
     min-width: 250px;
-    max-width: 350px;
+    max-width: 300px;
     height: 600px;
 }
-.headerad {
-    display: block;
-    max-height: var(--ad-height);
-    min-width: 200px;
-    max-width: 500px;
+
+.videoadwrapper {
+    position: fixed;
+    width: calc(50% - 250px);
+    max-width: 350px;
+    bottom: 5px;
+    right: 5px;
 }
+/*
 @media (min-width:320px) {
     .headerad {
         width: 320px;
-        height: 50px;
+        height: var(--header-ad-height);
     }
 }
 @media (min-width:360px) {
     .headerad {
         width: 360px;
-        height: 50px;
+        height: var(--header-ad-height);
     }
 }
 @media (min-width:390px) {
     .headerad {
         width: 390px;
-        height: 60px;
+        height: var(--header-ad-height);
     }
 }
 @media (min-width:414px) {
     .headerad {
         width: 414px;
-        height: 60px;
+        height: var(--header-ad-height);
     }
 }
 @media (min-width:500px) {
     .headerad {
         width: 500px;
-        height: 60px;
+        height: var(--header-ad-height);
     }
 }
-
-@media (max-width:999px) {
-    .rightadwrapper, .leftadwrapper, .sidead {
+*/
+@media (max-width:1023px) {
+    :root {
+        --subtitle-ad-height: 0px;
+    }
+    .rightadwrapper, .leftadwrapper, .sidead, .subtitleadwrapper, .subtitlead, .videoad {
         display: none;
     }
 }
 
-@media (min-width:1000px) {
+@media (min-width:1024px) {
     :root {
-        --ad-height: 0px;
+        --header-ad-height: 0px;
+        --keyboard-ad-height: 0px;
     }
-    .headeradwrapper, .headerad {
+    .headeradwrapper, .headerad, .keyboardadwrapper, .keyboardad {
         display: none;
     }
 }

@@ -91,18 +91,18 @@ export const modeData: ModeData = {
 export function storedWordNumber() {
     // Utility to capture stored word number before Svelte loads
     // Must default to getWordNumber() if nothing in store
-    const currMode = (JSON.parse(localStorage.getItem("mode")) as GameMode || 0)
+    const currMode = (JSON.parse(localStorage.getItem("mode")!) as GameMode || 0)
     let currGameState: GameState 
     
     if (currMode === 0) {
-        currGameState = JSON.parse(localStorage.getItem("gameState"))
+        currGameState = JSON.parse(localStorage.getItem("gameState")!)
         if(!currGameState || !currGameState.wordNumber)
             return getWordNumber()
         else
             return currGameState.wordNumber
     }
     else {
-        currGameState = JSON.parse(localStorage.getItem("histState"))
+        currGameState = JSON.parse(localStorage.getItem("histState")!)
         if(!currGameState)
             return getWordNumber() - 1
         else
@@ -118,7 +118,7 @@ export function getWordNumber() { // This is 1 less than the game number. No % u
 }
 
 // Computes x^y mod p
-export function power(x, y, p) {
+export function power(x:number, y:number, p:number) {
     // Initialize result
     let res = 1; 
    
@@ -139,7 +139,7 @@ export function power(x, y, p) {
     return res;
 }
 
-export function wordNumToArrayNum(wordNum) {
+export function wordNumToArrayNum(wordNum:number) {
     // A selection of 70 of the primitive roots modulo words.words.length+1 (=317)
     // This should keep us going for a good wee while!
     const PRIME = 317;
@@ -232,7 +232,7 @@ export function currentNoticeNum() {
     return (NOTICES.length - NOTICES.slice().reverse().findIndex(msg => (msg["showfrom"] <= today)) - 1);
 }
 
-export function fillNotice(node) {
+export function fillNotice(node: HTMLElement) {
     node.innerHTML = NOTICES[currentNoticeNum()]["message"];
 }
 
@@ -253,21 +253,21 @@ export function createDefaultStats(mode: GameMode): Stats {
 
     const urlStats = new URLSearchParams(window.location.search);
 	const stats = {
-		gamesPlayed: parseInt(urlStats.get("p")) || 0,
-		lastGame: parseInt(urlStats.get("l")) || 0,
+		gamesPlayed: parseInt(urlStats.get("p")!) || 0,
+		lastGame: parseInt(urlStats.get("l")!) || 0,
         lastGameNumber: 0,
         guesses: {
-			fail: parseInt(urlStats.get("fail")) || 0,
-			1: parseInt(urlStats.get("g1")) || 0,
-			2: parseInt(urlStats.get("g2")) || 0,
-			3: parseInt(urlStats.get("g3")) || 0,
-			4: parseInt(urlStats.get("g4")) || 0,
-			5: parseInt(urlStats.get("g5")) || 0,
-			6: parseInt(urlStats.get("g6")) || 0,
+			fail: parseInt(urlStats.get("fail")!) || 0,
+			1: parseInt(urlStats.get("g1")!) || 0,
+			2: parseInt(urlStats.get("g2")!) || 0,
+			3: parseInt(urlStats.get("g3")!) || 0,
+			4: parseInt(urlStats.get("g4")!) || 0,
+			5: parseInt(urlStats.get("g5")!) || 0,
+			6: parseInt(urlStats.get("g6")!) || 0,
             7: 0,
 		},
-		currentStreak: parseInt(urlStats.get("cs")) || 0,
-		maxStreak: parseInt(urlStats.get("ms")) || 0,
+		currentStreak: parseInt(urlStats.get("cs")!) || 0,
+		maxStreak: parseInt(urlStats.get("ms")!) || 0,
         imported: false,
 	};
 	if (stats.gamesPlayed === 0) return stats;

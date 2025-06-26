@@ -192,9 +192,24 @@
     }
     
 	onMount(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
-        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
-        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
+//        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
+//        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
+//        (window.adsbygoogle = window.adsbygoogle || []).push({}); // Google ads
+
+        // Venatus comnfiguration: TODO, specify the correct items!
+        self.__VM = self.__VM || [];
+        self.__VM.push(function (admanager, scope) {
+            scope.Config.get('double_mpu','left-sticky').display('slot-1');
+            scope.Config.get('double_mpu','right-sticky').display('slot-2');
+            scope.Config.get('mobile_banner').display('slot-3');
+            scope.Config.get('leaderboard').display('slot-4');
+            //scope.Config.get('mobile_mpu').display('slot-5');
+            scope.Config.get('video').display('slot-6');
+            //scope.Config.get('desktop_takeover').display('slot-5');
+            //scope.Config.get('mobile_takeover').display('slot-5');
+            // Based on your layout, here are the responsive tags. The placement will change based on screen width.
+            // With the mobile breakpoint set by default at max-width:1024px
+        });
 		if (!(game.gameStatus === "IN_PROGRESS") && $mode === 0) setTimeout(() => (showStats = true), delay);
         if (stats.gamesPlayed === 0) {
             showImport = true;
@@ -213,24 +228,17 @@
 
 <svelte:body on:click={board.hideCtx} on:contextmenu={board.hideCtx} />
     <div class="leftadwrapper">
-        <ins class="adsbygoogle sidead"
-            style="display:block"
-            data-ad-client="ca-pub-3184778483057051"
-            data-ad-slot="3132059243"></ins>
+        <div class="sidead" id="slot-1"></div>
     </div>
     <div class="rightadwrapper">
-        <ins class="adsbygoogle sidead"
-            style="display:block"
-            data-ad-client="ca-pub-3184778483057051"
-            data-ad-slot="1192291618"></ins>
+        <div class="sidead" id="slot-2"></div>
     </div>
-
+    <div class="videoadwrapper">
+        <div class="videoad" id="slot-6"></div>
+    </div>
 <main class:guesses={game.guesses !== 0} style="--rows: {ROWS}; --cols: {COLS}">
     <div class="headeradwrapper">
-        <ins class="adsbygoogle headerad"
-            style="display:block"
-            data-ad-client="ca-pub-3184778483057051"
-            data-ad-slot="4752262670"></ins>
+        <div class="headerad" id="slot-3"></div>
     </div>
 	<Header
 		bind:showRefresh
@@ -246,6 +254,9 @@
         on:randhistgame={randomHistGame}
 		on:closeTutPopUp|once={() => ($seenPopUp = 1)}
 		on:closeHistTutPopUp|once={() => ($seenPopUp = 0)}	/>
+    <div class="subtitleadwrapper">
+        <div class="subtitlead" id="slot-4"></div>
+    </div>
     <div>
 	<Board
 		bind:this={board}
@@ -253,6 +264,9 @@
 		evaluations={game.evaluations}
 		guesses={game.guesses}
 	/>
+    </div>
+    <div class="keyboardadwrapper">
+        <div class="keyboardad" id="slot-5"></div>
     </div>
 	<Keyboard
 		on:keystroke={() => {
@@ -270,7 +284,7 @@
 </main>
 
 {#if $noticeNum < currentNoticeNum() && stats.gamesPlayed > 0 && game.gameStatus === "IN_PROGRESS"}
-    <div class="notice" on:click={() => noticeNum.set(currentNoticeNum())}>
+    <div class="notice" role="button" tabindex={0} on:click={() => noticeNum.set(currentNoticeNum())} on:keydown={() => noticeNum.set(currentNoticeNum())}>
         <div use:fillNotice></div>
         <span class="ok">OK</span>
     </div>
