@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+
+	<script>      
+// Example: http://www.byrdle.net/fixstreak.html?p=181&l=1751670000000&ln=1270&fail=25&g1=3&g2=15&g3=70&g4=52&g5=10&g6=6&cs=1&ms=13
+        //export function getWordNumber() {
+        //    const numbleOneDate = new Date(2022,0,12,0,0,0,0).setHours(0,0,0,0)
+        //    const now = new Date().setHours(0,0,0,0)
+        //    const msInDay = 86400000
+        //    return Math.round((now - numbleOneDate) / msInDay) //% WORDS.length
+        //}
+
+  function importLocalStorage() {
+      var stats = (JSON.parse(localStorage.getItem("statistics")))
+      const urlStats = new URLSearchParams(window.location.search);
+      document.write(stats.currentStreak);
+
+      stats.currentStreak = parseInt(urlStats.get("cs")) || stats.currentStreak;
+      if (stats.maxStreak < stats.currentStreak)
+          stats.maxStreak = stats.currentStreak;
+      localStorage.setItem(`statistics`, JSON.stringify(stats));
+  }
+
+  importLocalStorage();
+        //localStorage.setItem(`statistics`, JSON.stringify(parseURLStats()));
+  window.location.replace("https://www.byrdle.net");
+        //window.location.replace("http://0.0.0.0:8080");
+  </script>
+    
+
+</head>
+
+<body>
+    Redirecting...
+</body>
+
+</html>
