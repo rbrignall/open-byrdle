@@ -5,6 +5,7 @@
     
 
 	<script>      
+// Example: http://www.byrdle.net/fixstats.html?p=181&l=1751670000000&ln=1270&fail=25&g1=3&g2=15&g3=70&g4=52&g5=10&g6=6&cs=1&ms=13
         //export function getWordNumber() {
         //    const numbleOneDate = new Date(2022,0,12,0,0,0,0).setHours(0,0,0,0)
         //    const now = new Date().setHours(0,0,0,0)
@@ -26,6 +27,7 @@
                 4: parseInt(urlStats.get("g4")) || 0,
                 5: parseInt(urlStats.get("g5")) || 0,
                 6: parseInt(urlStats.get("g6")) || 0,
+                7: parseInt(urlStats.get("g7")) || 0,
 		    },
            currentStreak: parseInt(urlStats.get("cs")) || 0,
            maxStreak: parseInt(urlStats.get("ms")) || 0,
