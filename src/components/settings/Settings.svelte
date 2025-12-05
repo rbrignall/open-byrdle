@@ -98,7 +98,7 @@
         
 	</div>
     <div class="footer">
-        <div>Version: Byrd 6.0.0</div>
+        <div>Version: Byrd 6.0.1</div>
         <div class="word">
             Game #{wordNumber+1}
         </div>
