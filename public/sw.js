@@ -1,6 +1,6 @@
 // Increase the v number when the app is updated
 
-const staticCacheName = "byrdle-v6.0.0";
+const staticCacheName = "byrdle-v6.0.1";
 
 const filesToCache = [
 	"./global.css",
@@ -28,7 +28,7 @@ self.addEventListener('install', event => {
 
 self.addEventListener('fetch', event => {
   // Do not cache history page:
-  if(event.request.url.includes("/history/"))
+  if(event.request.url.includes("/history/") || event.request.url.includes("ads.txt"))
     return fetch(event.request);
   else
   //console.log('Fetch event for ', event.request.url);
