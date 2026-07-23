@@ -247,4 +247,4 @@ appnexus.com,1908,RESELLER,f5ab79cb980f11d1
 
 #Yahoo
 yahoo.com, 100034, DIRECT, e1a5b5b6e3255540
-
+venatus.com, 6808b176a69bb31214e2c745, DIRECT
