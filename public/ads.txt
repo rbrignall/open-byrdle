@@ -2,8 +2,7 @@
 
 ownerdomain=byrdle.net
 managerdomain=venatus.com
-#V 14.07.2026 PH
-
+#V 06.11.2026 PH
 
 
 #----------------------------------------------------------------------------#
@@ -21,12 +20,6 @@ managerdomain=venatus.com
 #                                                                            #
 #----------------------------------------------------------------------------#
 
-#Adagio
-adagio.io, 1090, DIRECT                                                
-rubiconproject.com, 19116, RESELLER, 0bfd66d529a55807              
-pubmatic.com, 159110, RESELLER, 5d62403b186f2ace        
-lijit.com, 367236, RESELLER, fafdf38b16bf6b2b                                
-triplelift.com, 13482, RESELLER, 6c33edb13117fd86                          
 
 #AdaptMX
 amxrtb.com, 105199358, DIRECT                                               
@@ -36,9 +29,7 @@ pubmatic.com, 158355, RESELLER, 5d62403b186f2ace
 rubiconproject.com, 23844, RESELLER, 0bfd66d529a55807                         
 openx.com, 559680764, RESELLER, 6a698e2ec38604c6                              
 triplelift.com, 12507, RESELLER
-
-#Adform
-adform.com, 2767, RESELLER                                             
+improvedigital.com, 2942, RESELLER
 
 #Amazon
 aps.amazon.com,70247b00-ff8f-4016-b3ab-8344daf96e09,DIRECT     
@@ -57,10 +48,6 @@ pubmatic.com, 161335, RESELLER, 5d62403b186f2ace
 
 #Blockthrough
 blockthrough.com, 5643766199222272, DIRECT                                 
-
-#Blis
-blis.com, 1269, DIRECT, 61453ae19a4b73f4
-rubiconproject.com, 16928, RESELLER, 0bfd66d529a55807
 
 #Criteo
 criteo.com, B-062405, DIRECT, 9fac4a4a87c2a44f                             
@@ -84,17 +71,6 @@ indexexchange.com, 183921, DIRECT, 50b1c356f2c5c8fc
 indexexchange.com, 194127, DIRECT, 50b1c356f2c5c8fc                          
 indexexchange.com, 205972, RESELLER, 50b1c356f2c5c8fc                       
 
-#Infolinks
-infolinks.com, 3187418, direct
-pubmatic.com, 156872, reseller, 5d62403b186f2ace
-xandr.com, 3251, reseller
-indexexchange.com, 191306, reseller
-lijit.com, 268479, reseller, fafdf38b16bf6b2b
-media.net, 8CUY6IX4H, reseller
-openx.com, 543174347, reseller, 6a698e2ec38604c6
-video.unrulymedia.com, 2221906906, reseller
-improvedigital.com, 2016, reseller
-
 #Inmobi
 inmobi.com, cdfd74ce1cdd4a67b1c4794c072324ff, DIRECT, 83e75a7ae333ca9d
 Blis.com,33,RESELLER,61453ae19a4b73f4
@@ -104,7 +80,7 @@ verve.com, 5897, RESELLER, 0c8f5958fc2d6270
 insticator.com,843c9a44-60ea-4342-8ad4-68f894283b3e,DIRECT,b3511ffcafb23a32
 rubiconproject.com,17062,RESELLER,0bfd66d529a55807
 lijit.com,257618,RESELLER,fafdf38b16bf6b2b
-sharethrough.com,Q9IzHdvp,RESELLER,d53b998a7bd4ecd2
+sharethrough.com,3262,RESELLER,d53b998a7bd4ecd2
 themediagrid.com,DQ6AMB,RESELLER,35d5010d7789b49d
 triplelift.com,6998,RESELLER,6c33edb13117fd86
 risecodes.com,6124caed9c7adb0001c028d8,RESELLER
@@ -133,8 +109,18 @@ media.net, 8CU8ARTF8, DIRECT
 Media.net, 8CU198XI2, DIRECT                                               
 Media.net, 8CULP2FJP, DIRECT
 
-#MediaGrid
-themediagrid.com, LTW57M, DIRECT, 35d5010d7789b49d                           
+#Missena
+missena.com,SID-188107,DIRECT
+rubiconproject.com, 24548, RESELLER, 0bfd66d529a55807
+appnexus.com, 14655, RESELLER, f5ab79cb980f11d1
+themediagrid.com, IPB3NX, RESELLER, 9fac4a4a87c2a44f
+smartadserver.com, 3927, RESELLER, 060d053dcf45cbf3
+pubmatic.com, 162770, RESELLER, 5d62403b186f2ace
+smilewanted.com, 3924, RESELLER
+richaudience.com, HLWr9WfM73, RESELLER
+amxrtb.com, 105199912, RESELLER
+sharethrough.com, 3927, RESELLER, d53b998a7bd4ecd2
+triplelift.com, 14830, RESELLER, 6c33edb13117fd86
 
 #Onetag
 onetag.com, 59c7d7f65f9d658, RESELLER
@@ -157,7 +143,15 @@ The-ozone-project.com, OZONEVEN0005, DIRECT
 appnexus.com, 9979, RESELLER
 openx.com, 540731760, RESELLER, 6a698e2ec38604c6
 pubmatic.com, 160557, RESELLER, 5d62403b186f2ace
-indexexchange.com, 206233, RESELLER, 50b1c356f2c5c8fc
+adform.com, 2657, RESELLER, 9f5210a2f0999e32
+
+#PanxoAI
+panxo.ai, 998574, DIRECT, 8d84bb2d41f07b7f
+bidgx.com, nXeheZUrD6K2yxcj, RESELLER
+rubiconproject.com, 27034, RESELLER, 0bfd66d529a55807
+kntxy.com, 432645, RESELLER
+pubmatic.com, 166733, RESELLER, 5d62403b186f2ace
+xandr.com, 17781, RESELLER
 
 #PubMatic
 pubmatic.com, 159234, RESELLER, 5d62403b186f2ace                        
@@ -174,7 +168,6 @@ rubiconproject.com, 13510, RESELLER
 #Rise
 risecodes.com, 5fa94677b2db6a00015b22a9, DIRECT                       
 pubmatic.com, 160295, RESELLER, 5d62403b186f2ace                          
-xandr.com, 14082, RESELLER                                                 
 rubiconproject.com, 23876, RESELLER, 0bfd66d529a55807                      
 sharethrough.com, 5926d422, RESELLER, d53b998a7bd4ecd2                     
 yieldmo.com, 2754490424016969782, RESELLER                                 
@@ -183,6 +176,8 @@ onetag.com, 69f48c2160c8113, RESELLER
 gumgum.com, 16112, RESELLER, ffdef49475d318a9
 video.unrulymedia.com, 335119963, RESELLER                                 
 sharethrough.com, 4284, RESELLER, d53b998a7bd4ecd2
+33across.com, 0010b00002Xbn7QAAR, RESELLER, bbea06d9c4d2853c
+smartadserver.com, 4284, RESELLER
 
 #Seedtag
 seedtag.com, 68011633bc1ec10007f62708, DIRECT
@@ -190,6 +185,7 @@ xandr.com, 4009, RESELLER, f5ab79cb980f11d1
 rubiconproject.com, 17280, RESELLER, 0bfd66d529a55807
 smartadserver.com, 3050, RESELLER
 lijit.com, 397546, RESELLER, fafdf38b16bf6b2b
+rubiconproject.com, 28817, DIRECT, 0bfd66d529a55807
 
 #Sharethrough
 sharethrough.com, 31c129df, DIRECT, d53b998a7bd4ecd2                       
@@ -202,6 +198,7 @@ smartadserver.com, 4071, DIRECT
 smartadserver.com, 4073, DIRECT
 smartadserver.com, 4074, DIRECT
 sharethrough.com, 3490, RESELLER, 060d053dcf45cbf3
+rubiconproject.com, 16114, RESELLER, 0bfd66d529a55807
 
 #Smile Wanted
 smilewanted.com, 474, RESELLER
@@ -210,9 +207,6 @@ rubiconproject.com, 19814, RESELLER, 0bfd66d529a55807
 appnexus.com, 10040, RESELLER
 pubmatic.com, 158810, RESELLER, 5d62403b186f2ace
 openx.com, 557083110, RESELLER, 6a698e2ec38604c6
-
-#Teads
-teads.tv, 23348, DIRECT, 15a9c44f6d26cbe1
 
 #TheTradeDesk - Open Path
 venatus.com, 1, DIRECT
@@ -225,12 +219,6 @@ themediagrid.com, GODNC4, RESELLER, 35d5010d7789b49d
 video.unrulymedia.com, 985572675, DIRECT                                      
 video.unrulymedia.com, 985572675, RESELLER                                 
 sharethrough.com, 6qlnf8SY, RESELLER, d53b998a7bd4ecd2                     
-
-#WMG
-adwmg.com, 101261, DIRECT, c9688a22012618e7
-google.com, pub-8622186303703569, DIRECT, f08c47fec0942fa0
-freewheel.tv, 1604590, DIRECT
-freewheel.tv, 1604595, DIRECT
 
 #Wunderkind
 wunderkind.co, 8471, DIRECT
@@ -247,4 +235,5 @@ appnexus.com,1908,RESELLER,f5ab79cb980f11d1
 
 #Yahoo
 yahoo.com, 100034, DIRECT, e1a5b5b6e3255540
+
 venatus.com, 6808b176a69bb31214e2c745, DIRECT
